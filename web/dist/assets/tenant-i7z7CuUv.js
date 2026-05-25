@@ -1,0 +1,1 @@
+import{v as n}from"./index-DIdm6S1S.js";function r(t){return n.get("/tenants",{params:t})}function s(t){return n.post("/tenants",t)}function u(t,e){return n.put(`/tenants/${t}`,e)}function o(t){return n.delete(`/tenants/${t}`)}export{s as c,o as d,r as g,u};
