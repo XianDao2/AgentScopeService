@@ -10,7 +10,7 @@ from src.ms3.common.config import get_settings
 from src.ms3.database.connection import check_db_connection
 from src.ms3.database.redis_connection import check_redis_connection, close_redis
 from src.ms3.middleware.tenant_context import TenantContextMiddleware, RateLimitMiddleware
-from src.ms3.api.routers import auth, chat
+from src.ms3.api.routers import auth, chat, tenant, user, role, model, tool_group, agent, execution_log, knowledge, mcp, skill, observability
 
 settings = get_settings()
 
@@ -94,6 +94,17 @@ async def root():
 
 app.include_router(auth.router)
 app.include_router(chat.router)
+app.include_router(tenant.router)
+app.include_router(user.router)
+app.include_router(role.router)
+app.include_router(model.router)
+app.include_router(tool_group.router)
+app.include_router(agent.router)
+app.include_router(execution_log.router)
+app.include_router(knowledge.router)
+app.include_router(mcp.router)
+app.include_router(skill.router)
+app.include_router(observability.router)
 
 static_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "web", "dist")
 if os.path.exists(static_dir):
