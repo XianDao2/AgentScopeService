@@ -92,7 +92,7 @@ class KnowledgeDocument(Base, BaseModel):
     chunk_count = Column(Integer, nullable=False, default=0)
     version = Column(Integer, nullable=False, default=1)
     error_message = Column(Text, nullable=True)
-    metadata = Column(JSON, nullable=True)
+    document_metadata = Column(JSON, nullable=True)
 
 
 class KnowledgeChunk(Base, BaseModel):

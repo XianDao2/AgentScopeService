@@ -12,7 +12,7 @@ from src.ms3.models.platform import (
     AgentDefinition, ToolGroupDefinition, ToolDefinition,
     KnowledgeBase, KnowledgeDocument, KnowledgeChunk, ExecutionTrace
 )
-from src.ms3.middleware.tenant_context import get_current_tenant_id
+from src.ms3.auth.jwt_auth import get_current_tenant_id
 
 logger = logging.getLogger(__name__)
 
@@ -325,3 +325,11 @@ class ExecutionTraceDAL(BaseDAL):
         total_pages = (total + page_size - 1) // page_size if total > 0 else 0
         
         return items, total, total_pages
+
+
+class SysUserRoleDAL(BaseDAL):
+    model = SysUserRole
+
+
+class SysRolePermissionDAL(BaseDAL):
+    model = SysRolePermission

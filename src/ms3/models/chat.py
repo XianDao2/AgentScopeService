@@ -46,7 +46,7 @@ class ChatSession(Base, BaseModel):
     agent_id = Column(String(36), nullable=True, index=True)
     title = Column(String(255), nullable=True)
     active_skill_names = Column(JSON, nullable=True)
-    metadata = Column(JSON, nullable=True)
+    session_metadata = Column(JSON, nullable=True)
     status = Column(String(1), nullable=False, default="0")
     del_flag = Column(String(1), nullable=False, default="0")
 
@@ -68,5 +68,5 @@ class ChatMessage(Base, BaseModel):
     input_tokens = Column(Integer, nullable=True)
     output_tokens = Column(Integer, nullable=True)
     model_name = Column(String(100), nullable=True)
-    metadata = Column(JSON, nullable=True)
+    message_metadata = Column(JSON, nullable=True)
     del_flag = Column(String(1), nullable=False, default="0")

@@ -1,4 +1,3 @@
-
 import logging
 import math
 from typing import Union, Optional
@@ -47,21 +46,10 @@ class CalculatorTool:
         self,
         expression: str,
         precision: int = 10,
-    ) -&gt; CalculationResult:
-        """
-        执行计算
-        
-        Args:
-            expression: 数学表达式字符串
-            precision: 结果精度（小数位数）
-            
-        Returns:
-            CalculationResult
-        """
+    ) -> CalculationResult:
         logger.info(f"Calculating: {expression}")
         
         try:
-            # 安全的表达式求值
             result = self._safe_eval(expression)
             result = round(result, precision)
             
@@ -78,23 +66,18 @@ class CalculatorTool:
                 error=str(e),
             )
     
-    def _safe_eval(self, expression: str) -&gt; Union[int, float]:
-        """安全的表达式求值"""
-        # 限制可用的命名空间
+    def _safe_eval(self, expression: str) -> Union[int, float]:
         local_vars = {}
         global_vars = self.SAFE_FUNCTIONS.copy()
         
-        # 检查表达式是否只包含允许的字符
         allowed_chars = set("0123456789.+-*/()%^, _abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
         for char in expression:
             if char not in allowed_chars:
                 raise ValueError(f"Invalid character: {char}")
         
-        # 使用 eval 计算，但限制命名空间
         result = eval(expression, global_vars, local_vars)
         
         if not isinstance(result, (int, float)):
             raise ValueError("Expression must evaluate to a number")
         
         return result
-

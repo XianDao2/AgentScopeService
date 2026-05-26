@@ -14,7 +14,7 @@ class SysTenant(Base, BaseModel):
     work_dir = Column(String(255), nullable=True)
     max_skills = Column(Integer, nullable=False, default=100)
     max_concurrent_executions = Column(Integer, nullable=False, default=50)
-    metadata = Column(JSON, nullable=True)
+    tenant_metadata = Column(JSON, nullable=True)
     del_flag = Column(String(1), nullable=False, default="0")
 
     users = relationship("SysUser", back_populates="tenant")

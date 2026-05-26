@@ -1,4 +1,3 @@
-
 import logging
 from typing import Optional, Dict, Any
 from dataclasses import dataclass
@@ -39,18 +38,7 @@ class WeatherTool:
         location: str,
         units: str = "metric",
         include_forecast: bool = True,
-    ) -&gt; WeatherInfo:
-        """
-        查询天气
-        
-        Args:
-            location: 位置（城市名或坐标）
-            units: 单位（metric/imperial）
-            include_forecast: 是否包含预报
-            
-        Returns:
-            WeatherInfo
-        """
+    ) -> WeatherInfo:
         logger.info(f"Getting weather for: {location}")
         
         try:
@@ -70,8 +58,7 @@ class WeatherTool:
     
     def _get_mock_weather(
         self, location: str, units: str, include_forecast: bool
-    ) -&gt; WeatherInfo:
-        """生成模拟天气数据"""
+    ) -> WeatherInfo:
         temp_unit = "°C" if units == "metric" else "°F"
         base_temp = 22 if units == "metric" else 72
         
@@ -98,7 +85,5 @@ class WeatherTool:
     
     async def _get_openweathermap_weather(
         self, location: str, units: str, include_forecast: bool
-    ) -&gt; WeatherInfo:
-        """调用 OpenWeatherMap API（占位实现）"""
+    ) -> WeatherInfo:
         return self._get_mock_weather(location, units, include_forecast)
-

@@ -1,6 +1,6 @@
 # Models package
 from src.ms3.models.base import BaseModel
-from src.ms3.models.chat import ChatSession, ChatMessage
+from src.ms3.models.chat import ChatSession, ChatMessage, ChatProvider, ChatModel
 from src.ms3.models.platform import (
     AgentDefinition,
     ToolGroupDefinition,
@@ -15,14 +15,14 @@ from src.ms3.models.sys import (
     SysUser,
     SysRole,
     SysPermission,
-    SysCredential,
-    SysChatProvider,
-    SysChatModel,
-    SysMcpServer,
+    SysUserRole,
+    SysRolePermission,
 )
 
 __all__ = [
     "BaseModel",
+    "ChatProvider",
+    "ChatModel",
     "ChatSession",
     "ChatMessage",
     "AgentDefinition",
@@ -36,9 +36,7 @@ __all__ = [
     "SysUser",
     "SysRole",
     "SysPermission",
-    "SysCredential",
-    "SysChatProvider",
-    "SysChatModel",
-    "SysMcpServer",
+    "SysUserRole",
+    "SysRolePermission",
 ]
 

@@ -1,4 +1,3 @@
-
 import logging
 from typing import Optional, List, Dict
 from dataclasses import dataclass
@@ -37,29 +36,16 @@ class EmailTool:
     async def send_email(
         self,
         email: Email,
-    ) -&gt; EmailSendResult:
-        """
-        发送邮件
-        
-        Args:
-            email: Email 对象，包含主题、内容、收件人等信息
-            
-        Returns:
-            EmailSendResult 发送结果
-        """
+    ) -> EmailSendResult:
         logger.info(f"Preparing to send email: subject={email.subject}, to={email.to}")
         
         try:
             if not self.smtp_config:
-                # 没有配置 SMTP，返回模拟成功
                 logger.warning("SMTP not configured, returning mock result")
                 return EmailSendResult(
                     success=True,
                     message_id=f"mock-{hash(email.subject + str(email.to))}",
                 )
-            
-            # 实际的邮件发送逻辑应该在这里实现
-            # 使用 smtplib 或 aiosmtplib
             
             return EmailSendResult(
                 success=True,
@@ -81,21 +67,7 @@ class EmailTool:
         cc: Optional[List[str]] = None,
         bcc: Optional[List[str]] = None,
         attachments: Optional[List[str]] = None,
-    ) -&gt; Email:
-        """
-        构造 Email 对象
-        
-        Args:
-            subject: 邮件主题
-            body: 邮件正文
-            to: 收件人列表
-            cc: 抄送人列表
-            bcc: 密送人列表
-            attachments: 附件路径列表
-            
-        Returns:
-            Email 对象
-        """
+    ) -> Email:
         return Email(
             subject=subject,
             body=body,
@@ -104,4 +76,3 @@ class EmailTool:
             bcc=bcc,
             attachments=attachments,
         )
-
