@@ -19,7 +19,7 @@ class TenantBase(BaseModel):
     work_dir: Optional[str] = Field(None, description="工作目录")
     max_skills: Optional[int] = Field(100, description="最大技能数")
     max_concurrent_executions: Optional[int] = Field(50, description="最大并发执行数")
-    metadata: Optional[dict] = Field(None, description="元数据")
+    tenant_metadata: Optional[dict] = Field(None, alias="metadata", description="元数据")
 
 
 class TenantCreate(TenantBase):
@@ -33,7 +33,7 @@ class TenantUpdate(BaseModel):
     work_dir: Optional[str] = None
     max_skills: Optional[int] = None
     max_concurrent_executions: Optional[int] = None
-    metadata: Optional[dict] = None
+    tenant_metadata: Optional[dict] = Field(None, alias="metadata")
 
 
 class TenantResponse(TenantBase):
